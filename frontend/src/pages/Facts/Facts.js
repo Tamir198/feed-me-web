@@ -1,11 +1,10 @@
 import FactItem from "../../components/FactItem/FactItem";
-import "./Facts.module.css"
+import styles from "./Facts.module.css"
 
 function Facts() {
   return (
     <div>
-      <h1>Facts page</h1>
-      <FactItem description="pasta is an italian food" />
+      <FactItem description="Everybody loves Pizza" />
     </div>
   );
 }

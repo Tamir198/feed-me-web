@@ -1,4 +1,4 @@
-import "./LoginMenu.module.css"
+import styles from "./LoginMenu.module.css"
 
 function LoginMenu(){
     

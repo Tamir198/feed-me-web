@@ -1,8 +1,8 @@
-import "./FactItem.module.css"
+import styles from "./FactItem.module.css"
 
 function FactItem(props) {
-  return <div>
-    description = {props.description}
+  return <div className={styles.item}>
+    {props.description}
   </div>;
 }
 

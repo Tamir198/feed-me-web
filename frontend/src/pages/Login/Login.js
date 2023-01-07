@@ -1,6 +1,6 @@
 import Header from "../../components/Header/Header";
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
-import "./Login.module.css";
+import styles from "./Login.module.css";
 
 function Login() {
   return (

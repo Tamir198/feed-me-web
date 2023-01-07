@@ -1,4 +1,4 @@
-import "./MyRecipes.module.css"
+import styles from "./MyRecipes.module.css"
 
 function MyRecipes(){
     return <h1>My Recipes</h1>

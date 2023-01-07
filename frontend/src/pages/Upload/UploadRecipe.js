@@ -1,4 +1,4 @@
-import "./UploadRecipe.module.css";
+import styles from "./UploadRecipe.module.css";
 
 function UploadRecipe() {
   return <h1>Upload Recipe</h1>;

@@ -14,6 +14,7 @@ function App() {
       <Header />
       <NavBar />
       <Feed />
+      <Facts />
     </div>
   );
 }

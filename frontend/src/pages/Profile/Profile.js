@@ -1,4 +1,4 @@
-import "./Profile.module.css"
+import styles from "./Profile.module.css"
 
 function Profile(){
     return <h1>Profile</h1>
