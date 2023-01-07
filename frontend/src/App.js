@@ -1,10 +1,19 @@
-import { Blabla } from "./components/Blabla";
+import Feed from "./pages/Feed"
+import Facts from "./pages/Facts"
+import Login from "./pages/Login"
+import MyRecipes from "./pages/MyRecipes"
+import Profile from "./pages/Profile"
+import UploadRecipe from "./pages/UploadRecipe"
+import NavBar from "./components/NavBar"
+import Header from "./components/Header"
+
 
 function App() {
   return (
     <>
-      <h1>Feed me</h1>
-      <Blabla></Blabla>
+      <Header />
+      <NavBar />
+      <Feed />
     </>
   );
 }
