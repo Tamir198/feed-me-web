@@ -1,3 +1,5 @@
+import "./FeedItem.module.css"
+
 function FeedItem(props) {
   return (
     <div>

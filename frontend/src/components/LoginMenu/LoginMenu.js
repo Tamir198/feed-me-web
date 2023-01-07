@@ -1,3 +1,5 @@
+import "./LoginMenu.module.css"
+
 function LoginMenu(){
     
 }

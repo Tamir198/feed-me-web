@@ -1,3 +1,5 @@
+import "./Header.module.css"
+
 function Header(){
     return <h1>Feed Me</h1>
 }
