@@ -1,5 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 let app = null;
 let auth = null;
@@ -28,8 +32,6 @@ export const createNewUser = async (email, password) => {
 };
 
 export const SignInExistingUser = async (email, password) => {
-  //TODO CHECK IF ITS OK TO SIGN IN USERS VIA EMAIL AND NOT VIA ID
-  //!!!!!!!!CHECK WITH ADI!!!!!!!!
   const res = await signInWithEmailAndPassword(auth, email, password);
   return {
     id: res.user.uid,
