@@ -11,7 +11,7 @@ import MyRecipes from "../My Recipes/MyRecipes";
 function Profile() {
   return (
     <div className={styles.profile}>
-      <input type="text" placeholder="Name" />
+      <input type="text" placeholder="Enter new name" />
       <button>Save changes</button>
       <button>Logout</button>
     </div>
