@@ -1,3 +1,4 @@
+import admin from "firebase-admin";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -5,10 +6,23 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
+//Those lines are used to import JSON files in es module files
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const serviceAccount = require("../firebase-key.json");
+
+let adminAuth = null;
 let app = null;
 let auth = null;
 
 export const initFirebase = () => {
+  //We are using both auth and admin auth because to delete users you must use firebase-admin package
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+
+  adminAuth = admin.auth();
+
   const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "feed-me-web.firebaseapp.com",
@@ -37,4 +51,8 @@ export const SignInExistingUser = async (email, password) => {
     id: res.user.uid,
     name: res.user.email,
   };
+};
+
+export const deleteExistingUser = async (userId) => {
+  await adminAuth.deleteUser(userId);
 };
