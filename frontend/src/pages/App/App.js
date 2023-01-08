@@ -16,7 +16,7 @@ function App() {
       <NavBar />
       {/* <Feed /> */}
       {/* <Facts /> */}
-      <LoginMenu />
+      {/* <LoginMenu /> */}
     </div>
   );
 }

@@ -1,10 +1,51 @@
-import styles from "./NavBar.module.css"
+import styles from "./NavBar.module.css";
+import { 
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import Profile from "../../pages/Profile/Profile";
+import UploadRecipe from "../../pages/Upload/UploadRecipe";
+import Feed from "../../pages/Feed/Feed"
+import Facts from "../../pages/Facts/Facts"
 
+function NavBar() {
 
-function NavBar(){
-    return <div class="navigation">
-        
-    </div>
+  return (
+    <Router>
+      <div class="navigation">
+        <ul>
+          <li>
+            <Link style={{textDecoration: 'none', backgroundColor: '#95cac8'}} to="/Feed">Feed</Link>
+          </li>
+          <li>
+            <Link style={{textDecoration: 'none', backgroundColor: '#95cac8'}} to="/Profile">Profile</Link>
+          </li>
+          <li>
+            <Link style={{textDecoration: 'none', backgroundColor: '#95cac8'}} to="/Facts">Fun Facts</Link>
+          </li>
+          <li>
+            <Link style={{textDecoration: 'none', backgroundColor: '#95cac8'}} to="/UploadRecipe">Upload recipe</Link>
+          </li>
+        </ul>
+
+        <Routes>
+          <Route exact path="/" element={<Feed />} />
+
+          <Route path="/Feed" element={<Feed />} />
+
+          <Route path="/Profile" element={<Profile />} />
+
+          <Route path="/Facts" element={<Facts />} />
+
+          <Route path="/UploadRecipe" element={<UploadRecipe />} />
+            
+        </Routes>
+      </div>
+    </Router>
+    
+  );
 }
 
-export default NavBar
+export default NavBar;
