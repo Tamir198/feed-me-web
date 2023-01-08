@@ -7,14 +7,16 @@ import UploadRecipe from "../Upload/UploadRecipe";
 import NavBar from "../../components/NavBar/NavBar";
 import Header from "../../components/Header/Header";
 import "./App.css"
+import LoginMenu from "../../components/LoginMenu/LoginMenu";
 
 function App() {
   return (
     <div>
       <Header />
       <NavBar />
-      <Feed />
-      <Facts />
+      {/* <Feed /> */}
+      {/* <Facts /> */}
+      <LoginMenu />
     </div>
   );
 }
