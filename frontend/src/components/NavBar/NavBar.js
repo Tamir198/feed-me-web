@@ -9,6 +9,7 @@ import Profile from "../../pages/Profile/Profile";
 import UploadRecipe from "../../pages/Upload/UploadRecipe";
 import Feed from "../../pages/Feed/Feed"
 import Facts from "../../pages/Facts/Facts"
+import MyRecipes from "../../pages/My Recipes/MyRecipes";
 
 function NavBar() {
 
@@ -28,6 +29,9 @@ function NavBar() {
           <li>
             <Link style={{textDecoration: 'none', backgroundColor: '#95cac8'}} to="/UploadRecipe">Upload recipe</Link>
           </li>
+          <li>
+            <Link style={{textDecoration: 'none', backgroundColor: '#95cac8'}} to="/MyRecipes">My Recipes</Link>
+          </li>
         </ul>
 
         <Routes>
@@ -40,6 +44,9 @@ function NavBar() {
           <Route path="/Facts" element={<Facts />} />
 
           <Route path="/UploadRecipe" element={<UploadRecipe />} />
+
+          <Route path="/MyRecipes" element={<MyRecipes />} />
+
             
         </Routes>
       </div>
