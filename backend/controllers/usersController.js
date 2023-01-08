@@ -1,10 +1,13 @@
-import { createNewUser, SignInExistingUser } from "../services/firebase.js";
+import {
+  createNewUser,
+  deleteExistingUser,
+  SignInExistingUser,
+} from "../services/firebase.js";
 
 export const SignInUser = async (req, res) => {
   try {
     const userRes = await SignInExistingUser(req.body.email, req.body.password);
     res.send(userRes);
-    res.send("User got signed in");
   } catch (error) {
     console.log(error);
   }
@@ -18,5 +21,6 @@ export const editUser = (req, res) => {
   res.send("editUser");
 };
 export const deleteUser = (req, res) => {
-  res.send("deleteUser");
+  deleteExistingUser(req.body.uid);
+  res.send("User deleted");
 };
