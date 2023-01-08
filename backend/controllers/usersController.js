@@ -1,11 +1,19 @@
-import { TEXTS } from "../constants/constants.js";
+import { createNewUser, SignInExistingUser } from "../services/firebase.js";
 
-export const loginUser = (req, res) => {
-  res.send("loginUser");
+export const SignInUser = async (req, res) => {
+  try {
+    const userRes = await SignInExistingUser(req.body.email, req.body.password);
+    res.send(userRes);
+    res.send("User got signed in");
+  } catch (error) {
+    console.log(error);
+  }
 };
-export const newUser = (req, res) => {
-  res.send("newUser");
+export const newUser = async (req, res) => {
+  const userRes = await createNewUser(req.body.email, req.body.password);
+  res.send(userRes);
 };
+
 export const editUser = (req, res) => {
   res.send("editUser");
 };
