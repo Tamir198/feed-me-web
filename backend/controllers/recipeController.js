@@ -1,6 +1,7 @@
 import { Recipe } from "../models/recipeModel.js";
 import { VALUES } from "../constants/values.js";
 import { User } from "../models/userModel.js";
+import { io } from "../services/socket.js";
 
 export const getRecipes = async (req, res) => {
   const pageSize = VALUES.RECIPES_PAGE_SIZE;
