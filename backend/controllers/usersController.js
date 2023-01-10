@@ -21,6 +21,7 @@ export const newUser = async (req, res) => {
     firebaeId: userRes.id,
     name: userName,
     email: userRes.name,
+    recipesId: [],
   });
   user.save();
   //todo connect createwUser to new User model
@@ -28,7 +29,13 @@ export const newUser = async (req, res) => {
 };
 
 export const editUser = (req, res) => {
-  res.send("editUser");
+  const { id, name } = req.body;
+  try {
+    Recipe.findByIdAndUpdate({ _id: id }, { name }).exec();
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+  res.send("update user");
 };
 export const deleteUser = (req, res) => {
   deleteExistingUser(req.body.uid);
