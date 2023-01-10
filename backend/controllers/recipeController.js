@@ -1,5 +1,6 @@
 import { Recipe } from "../models/recipeModel.js";
 import { VALUES } from "../constants/values.js";
+import { User } from "../models/userModel.js";
 
 export const getRecipes = async (req, res) => {
   const pageSize = VALUES.RECIPES_PAGE_SIZE;
@@ -23,11 +24,16 @@ export const addRecipes = async (req, res) => {
       category,
       createdAt: new Date(),
     });
-    await recipe.save();
+    const recipe_save = await recipe.save();
     res.send("OK");
+    User.findOneAndUpdate(
+      { _id: userId },
+      { $push: { recipesId: recipe_save._id } }
+    ).exec();
   } catch (err) {
     res.status(400).send(err.message);
   }
+  io.emit("recipe-add", addTemplateUrl(ad));
 };
 
 export const updateRecipes = async (req, res) => {
@@ -51,6 +57,21 @@ export const deleteRecipes = async (req, res) => {
   try {
     await Recipe.findByIdAndRemove({ _id: req.body._id });
     res.send("OK");
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+export const countRecipe = async (req, res) => {
+  try {
+    const data = await Recipe.aggregate([
+      {
+        $group: {
+          _id: "$category",
+          count: { $sum: 1 },
+        },
+      },
+    ]);
+    res.send(data);
   } catch (err) {
     res.status(400).send(err.message);
   }
