@@ -1,9 +1,10 @@
+import mongoose from "mongoose";
 const schema = new mongoose.Schema({
-  userId: "int",
-  title: "string",
-  description: "string",
-  category: "string",
-  createdAt: Date(),
+  userId: { type: Number, required: true },
+  title: String,
+  description: String,
+  category: String,
+  createdAt: Date,
 });
 
 export const Recipe = mongoose.model("Recipe", schema);

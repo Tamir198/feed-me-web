@@ -12,7 +12,7 @@ const loadExtensions = async function (app) {
 
 const loadRoutes = function (app) {
   app.use(usersRoutes);
-  app.use(recipeRoutes);
+  app.use("/recipe", recipeRoutes);
 };
 
 const createApp = () => {

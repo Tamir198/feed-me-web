@@ -8,9 +8,9 @@ import {
   deleteRecipes,
 } from "../controllers/recipeController.js";
 
-router.get("/recipe/getRecipes", getRecipes);
-router.post("/recipe/addRecipe", addRecipes);
-router.patch("/recipe/updateRecipe", updateRecipes);
-router.delete("/recipe/deleteRecipe", deleteRecipes);
+router.get("/getRecipes", getRecipes);
+router.post("/addRecipe", addRecipes);
+router.patch("/updateRecipe", updateRecipes);
+router.delete("/deleteRecipe", deleteRecipes);
 
 export default router;
