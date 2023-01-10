@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const schema = new mongoose.Schema({
-  userId: { type: Number, required: true },
+  userId: { type: String, required: true },
   title: String,
   description: String,
   category: String,
