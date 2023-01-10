@@ -54,5 +54,11 @@ export const SignInExistingUser = async (email, password) => {
 };
 
 export const deleteExistingUser = async (userId) => {
-  await adminAuth.deleteUser(userId);
+  try {
+    await adminAuth.deleteUser(userId);
+    return "User deleted";
+  } catch (error) {
+    console.log(error);
+    return error.message;
+  }
 };

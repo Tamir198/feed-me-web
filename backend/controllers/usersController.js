@@ -30,7 +30,6 @@ export const newUser = async (req, res) => {
 export const editUser = (req, res) => {
   res.send("editUser");
 };
-export const deleteUser = (req, res) => {
-  deleteExistingUser(req.body.uid);
-  res.send("User deleted");
+export const deleteUser = async (req, res) => {
+  res.send(await deleteExistingUser(req.body.uid));
 };
