@@ -15,11 +15,16 @@ export const SignInUser = async (req, res) => {
 };
 
 export const newUser = async (req, res) => {
-  const user = new User({ id: 123, name: "Silence" });
+  const { email, password, userName } = req.body;
+  const userRes = await createNewUser(email, password);
+  const user = new User({
+    firebaeId: userRes.id,
+    name: userName,
+    email: userRes.name,
+  });
   user.save();
-  //todo connect createNewUser to new User model
-  const userRes = await createNewUser(req.body.email, req.body.password);
-  res.send(userRes);
+  //todo connect createwUser to new User model
+  res.send(user);
 };
 
 export const editUser = (req, res) => {
