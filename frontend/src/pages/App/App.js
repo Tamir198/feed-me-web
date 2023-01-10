@@ -15,7 +15,7 @@ function App() {
       <Header />
       <NavBar />
       {/* <Feed /> */}
-      {/* <Facts /> */}
+      {/* <Tips /> */}
       {/* <LoginMenu /> */}
     </div>
   );
