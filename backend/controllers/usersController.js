@@ -10,27 +10,30 @@ export const SignInUser = async (req, res) => {
     const userRes = await SignInExistingUser(req.body.email, req.body.password);
     res.send(userRes);
   } catch (error) {
-    console.log(error);
+    res.send(error);
   }
 };
 
 export const newUser = async (req, res) => {
-  const { email, password, userName } = req.body;
-  const userRes = await createNewUser(email, password);
-  const user = new User({
-    firebaeId: userRes.id,
-    name: userName,
-    email: userRes.name,
-  });
-  user.save();
-  //todo connect createwUser to new User model
-  res.send(user);
+  try {
+    const { email, password, userName } = req.body;
+    const userRes = await createNewUser(email, password);
+    const user = new User({
+      firebaeId: userRes.id,
+      name: userName,
+      email: userRes.name,
+    });
+    user.save();
+    //todo connect createwUser to new User model
+    res.send(user);
+  } catch (error) {
+    res.send(error);
+  }
 };
 
 export const editUser = (req, res) => {
   res.send("editUser");
 };
-export const deleteUser = (req, res) => {
-  deleteExistingUser(req.body.uid);
-  res.send("User deleted");
+export const deleteUser = async (req, res) => {
+  res.send(await deleteExistingUser(req.body.uid));
 };
