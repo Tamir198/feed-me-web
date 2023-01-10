@@ -6,8 +6,9 @@ import Profile from "../Profile/Profile";
 import UploadRecipe from "../Upload/UploadRecipe";
 import NavBar from "../../components/NavBar/NavBar";
 import Header from "../../components/Header/Header";
-import "./App.css"
+import "./App.css";
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
+import { Footer } from "../../components/Footer/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       {/* <Feed /> */}
       {/* <Facts /> */}
       {/* <LoginMenu /> */}
+      <Footer />
     </div>
   );
 }
