@@ -1,7 +1,8 @@
 import { Recipe } from "../models/recipeModel.js";
+import { VALUES } from "../constants/values.js";
 
 export const getRecipes = async (req, res) => {
-  const pageSize = 2;
+  const pageSize = VALUES.RECIPES_PAGE_SIZE;
   const page = req.body.page || 1;
   const skip = (page - 1) * pageSize;
   try {
