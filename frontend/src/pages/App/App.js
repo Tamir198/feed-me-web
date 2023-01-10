@@ -1,5 +1,5 @@
 import Feed from "../Feed/Feed";
-import Facts from "../Facts/Facts";
+import Tips from "../Tips/Tips";
 import Login from "../Login/Login";
 import MyRecipes from "../My Recipes/MyRecipes";
 import Profile from "../Profile/Profile";
