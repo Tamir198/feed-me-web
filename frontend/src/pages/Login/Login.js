@@ -5,8 +5,6 @@ import styles from "./Login.module.css";
 function Login() {
   return (
     <div>
-      <Header />
-      <h1>Login page</h1>
       <LoginMenu />
     </div>
   );
