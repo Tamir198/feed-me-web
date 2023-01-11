@@ -38,21 +38,35 @@ export const initFirebase = () => {
 };
 
 export const createNewUser = async (email, password) => {
-  const res = await createUserWithEmailAndPassword(auth, email, password);
-  return {
-    id: res.user.uid,
-    name: res.user.email,
-  };
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    return {
+      id: res.user.uid,
+      name: res.user.email,
+    };
+  } catch (error) {
+    return error.code;
+  }
 };
 
 export const SignInExistingUser = async (email, password) => {
-  const res = await signInWithEmailAndPassword(auth, email, password);
-  return {
-    id: res.user.uid,
-    name: res.user.email,
-  };
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+    return {
+      id: res.user.uid,
+      name: res.user.email,
+    };
+  } catch (error) {
+    return error.code;
+  }
 };
 
 export const deleteExistingUser = async (userId) => {
-  await adminAuth.deleteUser(userId);
+  try {
+    await adminAuth.deleteUser(userId);
+    return "User deleted";
+  } catch (error) {
+    console.log(error);
+    return error.message;
+  }
 };
