@@ -55,3 +55,8 @@ export const deleteRecipes = async (req, res) => {
     res.status(400).send(err.message);
   }
 };
+
+export const getNumberOfRecipes = async (req, res) => {
+  const recipesNum = await Recipe.countDocuments({});
+  res.send({ recipesNum });
+};
