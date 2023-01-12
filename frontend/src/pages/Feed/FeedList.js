@@ -9,6 +9,7 @@ export const FeedList = ({ currPage }) => {
 
   const getRecipesPage = async () => {
     const res = await Api.post("/recipe/getRecipes", { page: "" + currPage });
+    //TODO fix axios request error when returning to first page
     setRecipes(res.data);
   };
 
