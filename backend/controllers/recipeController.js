@@ -6,7 +6,11 @@ export const getRecipes = async (req, res) => {
   const page = req.body.page || 1;
   const skip = (page - 1) * pageSize;
   try {
-    const allRecipe = await Recipe.find({}).skip(skip).limit(pageSize).exec();
+    const allRecipe = await Recipe.find({})
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(pageSize)
+      .exec();
     res.send(allRecipe);
   } catch (err) {
     res.status(400).send(err.message);
@@ -14,12 +18,13 @@ export const getRecipes = async (req, res) => {
 };
 
 export const addRecipes = async (req, res) => {
-  const { userId, title, description, category } = req.body;
+  const { userId, author, title, description, category } = req.body;
   try {
     const recipe = new Recipe({
       userId,
       title,
       description,
+      author,
       category,
       createdAt: new Date(),
     });
