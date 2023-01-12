@@ -8,8 +8,7 @@ export const FeedList = ({ currPage }) => {
   const [recipes, setRecipes] = useState([]);
 
   const getRecipesPage = async () => {
-    const res = await Api.post("/recipe/getRecipes", { page: "" + currPage });
-    //TODO fix axios request error when returning to first page
+    const res = await Api.post("/recipe/getRecipes", { page: currPage + 1 });
     setRecipes(res.data);
   };
 
