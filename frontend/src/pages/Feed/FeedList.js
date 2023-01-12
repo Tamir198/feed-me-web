@@ -9,14 +9,12 @@ export const FeedList = ({ currPage }) => {
 
   const getRecipesPage = async () => {
     const res = await Api.post("/recipe/getRecipes", { page: "" + currPage });
-
-    console.log(res.data);
     setRecipes(res.data);
   };
 
   useEffect(() => {
     getRecipesPage();
-  }, []);
+  }, [currPage]);
 
   return (
     <div>

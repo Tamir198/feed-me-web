@@ -1,24 +1,11 @@
-import FeedItem from "../../components/FeedItem/FeedItem";
-import styles from "./Feed.module.css";
 import ReactPaginate from "react-paginate";
-
-import { Api } from "../../services/api";
-import { useCurrPage } from "./useCurrPage";
-import { useEffect, useState } from "react";
 import { FeedList } from "./FeedList";
+import { useState } from "react";
+import { usePagesInFeed } from "./usePagesInFeed";
 
 function Feed() {
-  const { currPage, handlePageClick } = useCurrPage(1);
-  const [totalRecipesNumber, setTotalRecipesNumber] = useState(0);
-
-  const getRecipesNumber = async () => {
-    const res = await Api.get("recipe/getRecipesNumber");
-    setTotalRecipesNumber(res.data.recipesNum / 5);
-  };
-
-  useEffect(() => {
-    getRecipesNumber();
-  }, []);
+  const [currPage, setCurrPage] = useState(1);
+  const totalRecipesNumber = usePagesInFeed();
 
   return (
     <div>
@@ -27,7 +14,7 @@ function Feed() {
       <ReactPaginate
         nextLabel="Next"
         previousLabel="Previous"
-        onPageChange={handlePageClick}
+        onPageChange={(selected) => setCurrPage(selected.selected)}
         pageRangeDisplayed={10}
         marginPagesDisplayed={10}
         pageCount={totalRecipesNumber}
