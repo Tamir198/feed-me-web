@@ -1,5 +1,6 @@
 import { Recipe } from "../models/recipeModel.js";
 import { VALUES } from "../constants/values.js";
+import { User } from "../models/userModel.js";
 
 export const getRecipes = async (req, res) => {
   const pageSize = VALUES.RECIPES_PAGE_SIZE;
@@ -15,6 +16,14 @@ export const getRecipes = async (req, res) => {
   } catch (err) {
     res.status(400).send(err.message);
   }
+};
+
+export const getRecipesById = async (req, res) => {
+  const userId = req.query.id;
+  const recipesIdsArray = await User.findOne({ _id: userId });
+  const userRecipes = await Recipe.find({ userId }).exec();
+
+  res.send({ userRecipes });
 };
 
 export const addRecipes = async (req, res) => {
