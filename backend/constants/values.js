@@ -1,3 +1,3 @@
 export const VALUES = {
-  RECIPES_PAGE_SIZE: 2,
+  RECIPES_PAGE_SIZE: 5,
 };
