@@ -15,6 +15,7 @@ export const Footer = () => {
     });
 
     socket.on("recipeAdded", (totalRecipe) => {
+      console.log("reicpe add from socket!!");
       setrecepiesNumber(totalRecipe);
     });
 

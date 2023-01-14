@@ -34,7 +34,7 @@ export const addRecipes = async (req, res) => {
   } catch (err) {
     res.status(400).send(err.message);
   }
-  io.emit("recipe-add", addTemplateUrl(ad));
+  io.emit("recipeAdded");
 };
 
 export const updateRecipes = async (req, res) => {
