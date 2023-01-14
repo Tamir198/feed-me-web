@@ -1,5 +1,5 @@
 import ReactPaginate from "react-paginate";
-import { FeedList } from "./FeedList";
+import { FeedList } from "./FeedList.js";
 import { useState } from "react";
 import { usePagesInFeed } from "./usePagesInFeed";
 
