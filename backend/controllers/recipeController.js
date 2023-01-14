@@ -2,6 +2,7 @@ import { Recipe } from "../models/recipeModel.js";
 import { VALUES } from "../constants/values.js";
 import { User } from "../models/userModel.js";
 import { io } from "../services/socket.js";
+import { openSocket } from "../services/socket.js";
 
 export const getRecipes = async (req, res) => {
   const pageSize = VALUES.RECIPES_PAGE_SIZE;
@@ -17,6 +18,8 @@ export const getRecipes = async (req, res) => {
 
 export const addRecipes = async (req, res) => {
   const { userId, title, description, category } = req.body;
+  io.emit("add-recipe", { data: userId });
+
   try {
     const recipe = new Recipe({
       userId,
@@ -27,6 +30,7 @@ export const addRecipes = async (req, res) => {
     });
     const recipe_save = await recipe.save();
     res.send("OK");
+
     User.findOneAndUpdate(
       { _id: userId },
       { $push: { recipesId: recipe_save._id } }
@@ -34,7 +38,6 @@ export const addRecipes = async (req, res) => {
   } catch (err) {
     res.status(400).send(err.message);
   }
-  io.emit("recipeAdded");
 };
 
 export const updateRecipes = async (req, res) => {

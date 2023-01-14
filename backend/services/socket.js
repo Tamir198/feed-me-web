@@ -12,6 +12,9 @@ export const openSocket = () => {
 
   io.on("connection", (socket) => {
     console.log("user connected! socket id:", socket.id);
-    // io.emit("recipeAdded", "8");
+
+    socket.on("add-recipe", (data) => {
+      console.log(data);
+    });
   });
 };
