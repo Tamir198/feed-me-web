@@ -6,11 +6,15 @@ import {
   addRecipes,
   updateRecipes,
   deleteRecipes,
+  getNumberOfRecipes,
+  getRecipesById,
 } from "../controllers/recipeController.js";
 
-router.get("/recipe/getRecipes", getRecipes);
-router.post("/recipe/addRecipe", addRecipes);
-router.patch("/recipe/updateRecipe", updateRecipes);
-router.delete("/recipe/deleteRecipe", deleteRecipes);
+router.get("/getRecipesNumber", getNumberOfRecipes);
+router.get("/getAllUserRecipes:id", getRecipesById);
+router.post("/getRecipes", getRecipes);
+router.post("/addRecipe", addRecipes);
+router.patch("/updateRecipe", updateRecipes);
+router.delete("/deleteRecipe", deleteRecipes);
 
 export default router;
