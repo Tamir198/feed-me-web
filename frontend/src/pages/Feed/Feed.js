@@ -1,22 +1,24 @@
-import FeedItem from "../../components/FeedItem/FeedItem";
-import styles from "./Feed.module.css";
+import ReactPaginate from "react-paginate";
+import { FeedList } from "./FeedList";
+import { useState } from "react";
+import { usePagesInFeed } from "./usePagesInFeed";
 
 function Feed() {
+  const [currPage, setCurrPage] = useState(0);
+  const totalRecipesNumber = usePagesInFeed();
+
   return (
     <div>
-      <FeedItem
-        title="Pasta"
-        description="Boil pasta and make sauce"
-        author="Danielle"
-        date="7.1.23"
-        catagory="Dairy"
-      />
-      <FeedItem
-        title="Burger"
-        description="Order from walt"
-        author="Tamir"
-        date="7.1.23"
-        catagory="meat"
+      <FeedList currPage={currPage} />
+
+      <ReactPaginate
+        nextLabel="Next"
+        previousLabel="Previous"
+        onPageChange={(selected) => setCurrPage(selected.selected)}
+        pageRangeDisplayed={10}
+        marginPagesDisplayed={10}
+        pageCount={totalRecipesNumber}
+        breakLabel="..."
       />
     </div>
   );
