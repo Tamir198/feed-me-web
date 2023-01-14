@@ -12,42 +12,78 @@ function LoginMenu({ setIsLoggedIn }) {
     userFbId: "",
   };
 
-  const userEmail = useRef(null);
-  const userPass = useRef(null);
+  const [userEmail, setuserEmail] = useState("");
+  const [userPass, setuserPass] = useState("");
   const navigate = useNavigate();
 
   async function createUser() {
     const res = await Api.post("user/newUser", {
-      email: userEmail.current.value,
-      password: userPass.current.value,
+      email: userEmail,
+      password: userPass,
     });
-    console.log(res);
-    localStorage.setItem(userEmail.current.value, JSON.stringify(res.data));
+    console.log(userEmail + " " + userPass);
+    // get from res only the id of the user
+    // save user in local storage with the key "true" as isLoggedIn
+    // localStorage.setItem("true", JSON.stringify(res.data));
     currentUser.userId = res.data._id;
-    currentUser.useremail = res.data.email;
+    currentUser.useremail = userEmail;
     currentUser.userFbId = res.data.firebaeId;
     currentUser.isLoggedIn = true;
+    localStorage.setItem("true", currentUser);
+
+    // let currentUser: {true, res.data._id, res.data.email, res.data.firebaeId}
     console.log(currentUser);
     //Save the user details like this
-    // currentUser: {...} 
+    // currentUser: {...}
     setIsLoggedIn(true);
     navigate("/Feed", { replace: true });
   }
 
+  // for existing but not logged in users
+  async function logIn() {
+    const res = await Api.post("user/existingUser", {
+      email: userEmail,
+      password: userPass,
+    });
+    // let user = JSON.parse(localStorage.getItem("true"))
+    let user = res.data;
+    console.log(res.data);
+    // go to Feed only if the user exists
+    if (res.data._id !== undefined) {
+      currentUser.isLoggedIn = true;
+      currentUser.useremail = user.name;
+      currentUser.userId = user.id;
+      currentUser.userFbId = user.firebaeId;
+      setIsLoggedIn(true);
+      navigate("/Feed", { replace: true });
+    } else {
+      alert("User does not exist. please register first");
+    }
+  }
+
+  //TODO: on createUser - user is not saved in the local storage
+  //login: can't find existing user. always returns "user not exists".
+  // probably "createUser" doesnt save user in the DB??
+  // what is the structure of a User document? password is saved?
+
   return (
     <div className="form">
-      <input type="email" placeholder="Email" ref={userEmail} />
-      <input type="password" placeholder="Password" ref={userPass} />
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={(e) => setuserEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setuserPass(e.target.value)}
+      />
       <div className={styles.registration_buttons}>
-        <button type="submit">Login</button>
+        <button onClick={logIn} type="submit">
+          Login
+        </button>
         <button onClick={createUser}>Register</button>
       </div>
-      {/* <Routes>
-          <Route
-            path="/"
-            element={currentUser.isLoggedIn && <Navigate to="/Feed" />}
-           />
-        </Routes> */}
     </div>
   );
 }
