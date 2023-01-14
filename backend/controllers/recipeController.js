@@ -1,6 +1,7 @@
 import { Recipe } from "../models/recipeModel.js";
 import { VALUES } from "../constants/values.js";
 import { User } from "../models/userModel.js";
+import { ObjectId } from "mongodb";
 
 export const getRecipes = async (req, res) => {
   const pageSize = VALUES.RECIPES_PAGE_SIZE;
@@ -20,9 +21,11 @@ export const getRecipes = async (req, res) => {
 
 export const getRecipesById = async (req, res) => {
   const userId = req.query.id;
-  const recipesIdsArray = await User.findOne({ _id: userId });
-  const userRecipes = await Recipe.find({ userId }).exec();
+  const user = await User.findOne({ _id: ObjectId(userId) });
 
+  const userRecipes = await Recipe.find({
+    _id: { $in: user.recipesId },
+  }).exec();
   res.send({ userRecipes });
 };
 
