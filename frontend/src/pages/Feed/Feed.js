@@ -4,7 +4,7 @@ import { useState } from "react";
 import { usePagesInFeed } from "./usePagesInFeed";
 
 function Feed() {
-  const [currPage, setCurrPage] = useState(1);
+  const [currPage, setCurrPage] = useState(0);
   const totalRecipesNumber = usePagesInFeed();
 
   return (
