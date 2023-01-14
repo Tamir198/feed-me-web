@@ -1,12 +1,12 @@
 import styles from "./LoginMenu.module.css";
 import { useEffect, useRef, useState } from "react";
 import { Api } from "../../services/api";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Router, useNavigate, Routes, navigate, Route } from "react-router-dom";
 
 function LoginMenu() {
   const currentUser = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     userId: "",
     useremail: "",
     userFbId: "",
@@ -28,14 +28,8 @@ function LoginMenu() {
     currentUser.userFbId = res.data.firebaeId;
     currentUser.isLoggedIn = true;
     console.log(currentUser);
+    navigate("/Feed", { replace: true });
   }
-
-  useEffect(() => {
-    if (currentUser.isLoggedIn) {
-      navigate("/Feed", { replace: true });
-      // <Navigate replace to='/Feed' />
-    }
-  }, [currentUser.isLoggedIn]);
 
   return (
     <div className="form">
