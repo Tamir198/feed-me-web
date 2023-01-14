@@ -4,7 +4,7 @@ import { Api } from "../../services/api";
 import { Link, NavLink } from "react-router-dom";
 import { Router, useNavigate, Routes, navigate, Route } from "react-router-dom";
 
-function LoginMenu() {
+function LoginMenu({ setIsLoggedIn }) {
   const currentUser = {
     isLoggedIn: false,
     userId: "",
@@ -28,6 +28,9 @@ function LoginMenu() {
     currentUser.userFbId = res.data.firebaeId;
     currentUser.isLoggedIn = true;
     console.log(currentUser);
+    //Save the user details like this
+    // currentUser: {...} 
+    setIsLoggedIn(true);
     navigate("/Feed", { replace: true });
   }
 

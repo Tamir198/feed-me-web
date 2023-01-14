@@ -10,14 +10,17 @@ import "./App.css";
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
 import { BrowserRouter, Router, Outlet } from "react-router-dom";
 import { AppRouter } from "../../AppRouter";
+import { useState } from "react";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div>
       <BrowserRouter>
-        <Outlet />
         <Header />
-        <AppRouter />
+        {isLoggedIn && <NavBar />}
+        <AppRouter setIsLoggedIn={setIsLoggedIn} />
       </BrowserRouter>
     </div>
   );

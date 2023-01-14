@@ -7,10 +7,10 @@ import UploadRecipe from "./pages/Upload/UploadRecipe";
 import MyRecipes from "./pages/My Recipes/MyRecipes";
 import Login from "./pages/Login/Login";
 
-export const AppRouter = () => (
+export const AppRouter = ({setIsLoggedIn}) => (
   <Suspense fallback={<>"Loading..."</>}>
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/Feed" element={<Feed />} />
       <Route path="/Profile" element={<Profile />} />
       <Route path="/Tips" element={<Tips />} />
