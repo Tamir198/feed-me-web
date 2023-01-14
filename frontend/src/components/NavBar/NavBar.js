@@ -15,7 +15,7 @@ function NavBar() {
 
   return (
     <Router>
-      <div class="navigation">
+      <div className="navigation">
         <ul>
           <li>
             <Link style={{textDecoration: 'none', backgroundColor: '#95cac8'}} to="/Feed">Feed</Link>
@@ -50,8 +50,7 @@ function NavBar() {
             
         </Routes>
       </div>
-    </Router>
-    
+      </Router>
   );
 }
 

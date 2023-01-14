@@ -8,17 +8,18 @@ import NavBar from "../../components/NavBar/NavBar";
 import Header from "../../components/Header/Header";
 import "./App.css"
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
+import {Router} from "react-router-dom"
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Login />
-      {/* <NavBar /> */}
-      {/* <Feed /> */}
-      {/* <Tips /> */}
-      {/* <LoginMenu /> */}
-    </div>
+      <div>
+        <Header />
+        <Login />
+        {/* <NavBar /> */}
+        {/* <Feed /> */}
+        {/* <Tips /> */}
+        {/* <LoginMenu /> */}
+      </div>
   );
 }
 
