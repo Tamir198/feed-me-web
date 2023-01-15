@@ -17,19 +17,19 @@ function LoginMenu({ setIsLoggedIn }) {
   const navigate = useNavigate();
 
   async function createUser() {
-    const res = await Api.post("user/newUser", {
+    const res = await Api.post("/user/newUser", {
       email: userEmail,
       password: userPass,
     });
     console.log(userEmail + " " + userPass);
     // get from res only the id of the user
-    // save user in local storage with the key "true" as isLoggedIn
+    // save user in local storage with the key isLoggedIn
     // localStorage.setItem("true", JSON.stringify(res.data));
     currentUser.userId = res.data._id;
     currentUser.useremail = userEmail;
     currentUser.userFbId = res.data.firebaeId;
     currentUser.isLoggedIn = true;
-    localStorage.setItem("true", currentUser);
+    localStorage.setItem(currentUser.isLoggedIn, JSON.stringify(currentUser));
 
     // let currentUser: {true, res.data._id, res.data.email, res.data.firebaeId}
     console.log(currentUser);
@@ -49,7 +49,7 @@ function LoginMenu({ setIsLoggedIn }) {
     let user = res.data;
     console.log(res.data);
     // go to Feed only if the user exists
-    if (res.data._id !== undefined) {
+    if (res.data.id !== undefined) {
       currentUser.isLoggedIn = true;
       currentUser.useremail = user.name;
       currentUser.userId = user.id;
