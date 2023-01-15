@@ -1,25 +1,42 @@
 import { Recipe } from "../models/recipeModel.js";
 import { VALUES } from "../constants/values.js";
+import { User } from "../models/userModel.js";
+import { ObjectId } from "mongodb";
 
 export const getRecipes = async (req, res) => {
   const pageSize = VALUES.RECIPES_PAGE_SIZE;
   const page = req.body.page || 1;
   const skip = (page - 1) * pageSize;
   try {
-    const allRecipe = await Recipe.find({}).skip(skip).limit(pageSize).exec();
+    const allRecipe = await Recipe.find({})
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(pageSize)
+      .exec();
     res.send(allRecipe);
   } catch (err) {
     res.status(400).send(err.message);
   }
 };
 
+export const getRecipesById = async (req, res) => {
+  const userId = req.query.id;
+  const user = await User.findOne({ _id: ObjectId(userId) });
+
+  const userRecipes = await Recipe.find({
+    _id: { $in: user.recipesId },
+  }).exec();
+  res.send({ userRecipes });
+};
+
 export const addRecipes = async (req, res) => {
-  const { userId, title, description, category } = req.body;
+  const { userId, author, title, description, category } = req.body;
   try {
     const recipe = new Recipe({
       userId,
       title,
       description,
+      author,
       category,
       createdAt: new Date(),
     });
@@ -54,4 +71,9 @@ export const deleteRecipes = async (req, res) => {
   } catch (err) {
     res.status(400).send(err.message);
   }
+};
+
+export const getNumberOfRecipes = async (req, res) => {
+  const recipesNum = await Recipe.countDocuments({});
+  res.send({ recipesNum });
 };

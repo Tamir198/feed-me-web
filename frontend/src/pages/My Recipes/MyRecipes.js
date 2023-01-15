@@ -1,22 +1,25 @@
-import MyRecipeItem from "../../components/MyRecipeItem/MyRecipeItem";
-import styles from "./MyRecipes.module.css";
+import { useState } from "react";
+import { usePagesInMyRecipe } from "./usePagesInMyRecipe.js";
+import ReactPaginate from "react-paginate";
+
+import { MyRecipeList } from "./MyRecipeList.js";
 
 function MyRecipes() {
+  const [currPage, setCurrPage] = useState(0);
+  const [totalRecipesNumber, usersRecipes] = usePagesInMyRecipe();
+
   return (
     <div>
-      <MyRecipeItem
-        title="Pasta"
-        description="Boil pasta and make sauce"
-        author="Danielle"
-        date="7.1.23"
-        catagory="Dairy"
-      />
-      <MyRecipeItem
-        title="Pizza"
-        description="Make dough, tomato sauce and add Mozarella"
-        author="Danielle"
-        date="8.1.23"
-        catagory="Dairy"
+      <MyRecipeList usersRecipes={usersRecipes} currPage={currPage} />
+
+      <ReactPaginate
+        nextLabel="Next"
+        previousLabel="Previous"
+        onPageChange={(selected) => setCurrPage(selected.selected)}
+        pageRangeDisplayed={10}
+        marginPagesDisplayed={10}
+        pageCount={totalRecipesNumber}
+        breakLabel="..."
       />
     </div>
   );

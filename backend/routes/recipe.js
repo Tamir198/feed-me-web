@@ -6,9 +6,13 @@ import {
   addRecipes,
   updateRecipes,
   deleteRecipes,
+  getNumberOfRecipes,
+  getRecipesById,
 } from "../controllers/recipeController.js";
 
-router.get("/getRecipes", getRecipes);
+router.get("/getRecipesNumber", getNumberOfRecipes);
+router.get("/getAllUserRecipes:id", getRecipesById);
+router.post("/getRecipes", getRecipes);
 router.post("/addRecipe", addRecipes);
 router.patch("/updateRecipe", updateRecipes);
 router.delete("/deleteRecipe", deleteRecipes);
