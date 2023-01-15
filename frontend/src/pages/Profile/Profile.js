@@ -1,4 +1,6 @@
 import styles from "./Profile.module.css";
+import { Api } from "../../services/api";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,11 +11,29 @@ import {
 import MyRecipes from "../My Recipes/MyRecipes";
 
 function Profile() {
+
+  const navigate = useNavigate();
+  const userId = JSON.parse(localStorage.getItem("true")).userId
+
+  function deleteUser(){
+    const res = Api.delete("user/deleteUser", {
+      uid: userId
+    })
+
+    if(res.status === 200){
+      alert("User deleted")
+      navigate("/Feed", { replace: true });
+    }
+
+    // make sure this works (because i cant save users in the first place)
+  }
+
   return (
     <div className={styles.profile}>
       <input type="text" placeholder="Enter new name" />
       <button>Save changes</button>
       <button>Logout</button>
+      <button onClick={deleteUser}>Delete account</button>
     </div>
   );
 }
