@@ -21,7 +21,6 @@ function UploadRecipe() {
       category: catagory
     });
 
-    debugger
     if(res.status === 200) //OK
       alert("Recipe uploaded successfully!")
     else
