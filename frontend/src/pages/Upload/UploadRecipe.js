@@ -11,24 +11,21 @@ function UploadRecipe() {
   
 
   async function uploadRecipe(){
-    // check if id is correct
-    // const userId = JSON.parse(localStorage.getItem("true")).id
-    // console.log(userId + ", " + title + ", " + description + ", " + catagory);
-    console.log(title + ", " + description + ", " + catagory);
+    const userId = JSON.parse(localStorage.getItem("true")).userId
+    console.log(userId + ", " + title + ", " + description + ", " + catagory);
 
     const res = await Api.post("user/existingUser", {
-      userId: "",
+      userId: userId,
       title: title,
       description: description,
       category: catagory
     });
 
-    if(res.data === "OK")
+    debugger
+    if(res.status === 200) //OK
       alert("Recipe uploaded successfully!")
     else
       alert("Recipe failed to upload, please try again")
-
-      //TODO: get userId, check why recipe is not uploading correctly
 
   }
 
@@ -42,7 +39,6 @@ function UploadRecipe() {
         placeholder="Recipe"
         onChange={(e) => setDescription(e.target.value)}
       ></textarea>
-      {/* <label for="catagory">Catagory:</label> */}
       <select className={styles.options} id="catagory" onChange={(e) => setCatagory(e.target.value)}>
         <option value="Meat">Meat</option>
         <option value="Dairy">Dairy</option>
