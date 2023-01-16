@@ -28,7 +28,6 @@ function Profile() {
       console.log(res);
     }
 
-    // make sure this works (because i cant save users in the first place)
   }
 
   return (
