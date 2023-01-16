@@ -9,6 +9,50 @@ import Graps from "../../pages/Graphs/Graphs";
 
 function NavBar() {
   return (
+    <div className="navigation">
+      <ul>
+        <li>
+          <Link
+            style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
+            to="/Feed"
+          >
+            Feed
+          </Link>
+        </li>
+        <li>
+          <Link
+            style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
+            to="/Profile"
+          >
+            Profile
+          </Link>
+        </li>
+        <li>
+          <Link
+            style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
+            to="/Tips"
+          >
+            Fun Tips
+          </Link>
+        </li>
+        <li>
+          <Link
+            style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
+            to="/UploadRecipe"
+          >
+            Upload recipe
+          </Link>
+        </li>
+        <li>
+          <Link
+            style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
+            to="/MyRecipes"
+          >
+            My Recipes
+          </Link>
+        </li>
+      </ul>
+    </div>
     <Router>
       <div class="navigation">
         <ul>

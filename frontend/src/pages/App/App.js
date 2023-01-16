@@ -9,15 +9,20 @@ import Header from "../../components/Header/Header";
 
 import "./App.css";
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
+import { BrowserRouter, Router, Outlet } from "react-router-dom";
+import { AppRouter } from "../../AppRouter";
+import { useState } from "react";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div>
-      <Header />
-      <NavBar />
-      {/* <Feed /> */}
-      {/* <Facts /> */}
-      {/* <LoginMenu /> */}
+      <BrowserRouter>
+        <Header />
+        {isLoggedIn && <NavBar />}
+        <AppRouter setIsLoggedIn={setIsLoggedIn} />
+      </BrowserRouter>
     </div>
   );
 }
