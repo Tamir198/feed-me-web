@@ -5,7 +5,7 @@ import UploadRecipe from "../../pages/Upload/UploadRecipe";
 import Feed from "../../pages/Feed/Feed";
 import Tips from "../../pages/Tips/Tips";
 import MyRecipes from "../../pages/My Recipes/MyRecipes";
-import Graps from "../../pages/Graps/Graps";
+import Graps from "../../pages/Graphs/Graphs";
 
 function NavBar() {
   return (

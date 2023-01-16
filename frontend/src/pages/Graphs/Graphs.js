@@ -1,22 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 import { Api } from "../../services/api";
+import { color } from "d3";
+import styles from "./Graphs.css";
 
 const Graps = () => {
-  const [data, setData] = useState([
-    {
-      _id: "changeee",
-      value: 1,
-    },
-    {
-      _id: "String",
-      value: 6,
-    },
-    {
-      _id: "woman",
-      value: 41,
-    },
-  ]);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   async function getData() {
     const res = await Api.get("/recipe/getSumCategory");
@@ -26,8 +19,6 @@ const Graps = () => {
   const containerRef = useRef(null);
   useEffect(() => {
     const svg = d3.select(containerRef.current);
-    // getData();
-
     const xScale = d3
       .scaleBand()
       .domain(data.map((d) => d._id))
@@ -46,14 +37,14 @@ const Graps = () => {
       .attr("y", (d) => 200 - yScale(d.value))
       .attr("width", xScale.bandwidth())
       .attr("height", (d) => yScale(d.value))
-      .attr("fill", "#");
+      .attr("fill", "#551a8c");
 
     svg
       .selectAll("text")
       .data(data)
       .attr("x", (d) => xScale(d._id) + xScale.bandwidth() / 2)
       .attr("y", (d) => 195 - yScale(d.value))
-      .text((d) => d._id)
+      .text((d) => d._id + " " + d.value)
       .attr("text-anchor", "middle")
       .attr("fill", "white")
       .join("text");
@@ -61,6 +52,7 @@ const Graps = () => {
 
   return (
     <div>
+      <p style={{ color: "#551a8c" }}>Category Statistic</p>
       <svg ref={containerRef} width={500} height={300} />
     </div>
   );
