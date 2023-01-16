@@ -6,6 +6,7 @@ import {
   addRecipes,
   updateRecipes,
   deleteRecipes,
+  countRecipe,
   getNumberOfRecipes,
   getRecipesById,
   getSumCategory,
@@ -18,5 +19,6 @@ router.get("/getSumCategory", getSumCategory);
 router.post("/addRecipe", addRecipes);
 router.patch("/updateRecipe", updateRecipes);
 router.delete("/deleteRecipe", deleteRecipes);
+router.get("/getSumCategory", countRecipe);
 
 export default router;

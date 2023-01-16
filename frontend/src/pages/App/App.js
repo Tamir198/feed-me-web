@@ -12,6 +12,7 @@ import LoginMenu from "../../components/LoginMenu/LoginMenu";
 import { BrowserRouter, Router, Outlet } from "react-router-dom";
 import { AppRouter } from "../../AppRouter";
 import { useState } from "react";
+import { Footer } from "../../components/Footer/Footer";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,6 +23,7 @@ function App() {
         <Header />
         {isLoggedIn && <NavBar />}
         <AppRouter setIsLoggedIn={setIsLoggedIn} />
+        <Footer />
       </BrowserRouter>
     </div>
   );
