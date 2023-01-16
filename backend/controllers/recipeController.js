@@ -18,7 +18,17 @@ export const getRecipes = async (req, res) => {
     res.status(400).send(err.message);
   }
 };
-
+export const getSumCategory = async (req, res) => {
+  const data = await Recipe.aggregate([
+    {
+      $group: {
+        _id: "$category",
+        value: { $sum: 1 }, // this means that the count will increment by 1
+      },
+    },
+  ]).exec();
+  res.send(data);
+};
 export const getRecipesById = async (req, res) => {
   const userId = req.query.id;
   const user = await User.findOne({ _id: ObjectId(userId) });
