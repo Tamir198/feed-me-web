@@ -51,78 +51,17 @@ function NavBar() {
             My Recipes
           </Link>
         </li>
+
+        <li>
+          <Link
+            style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
+            to="/Statistic"
+          >
+            Statistic
+          </Link>
+        </li>
       </ul>
     </div>
-    <Router>
-      <div class="navigation">
-        <ul>
-          <li>
-            <Link
-              style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
-              to="/Feed"
-            >
-              Feed
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
-              to="/Profile"
-            >
-              Profile
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
-              to="/Tips"
-            >
-              Fun Tips
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
-              to="/UploadRecipe"
-            >
-              Upload recipe
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
-              to="/MyRecipes"
-            >
-              My Recipes
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
-              to="/Statistic"
-            >
-              Statistic
-            </Link>
-          </li>
-        </ul>
-
-        <Routes>
-          <Route exact path="/" element={<Feed />} />
-
-          <Route path="/Feed" element={<Feed />} />
-
-          <Route path="/Profile" element={<Profile />} />
-
-          <Route path="/Tips" element={<Tips />} />
-
-          <Route path="/UploadRecipe" element={<UploadRecipe />} />
-
-          <Route path="/MyRecipes" element={<MyRecipes />} />
-
-          <Route exact path="/Statistic" element={<Graps />} />
-        </Routes>
-      </div>
-    </Router>
   );
 }
 
