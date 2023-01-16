@@ -11,18 +11,21 @@ import {
 import MyRecipes from "../My Recipes/MyRecipes";
 
 function Profile() {
-
   const navigate = useNavigate();
-  const userId = JSON.parse(localStorage.getItem("true")).userId
+  const userId = JSON.parse(localStorage.getItem("true")).userId;
 
-  function deleteUser(){
-    const res = Api.delete("user/deleteUser", {
-      uid: userId
-    })
+  async function deleteUser() {
+    const res = await Api.delete("user/deleteUser", {
+      data: {
+        uid: userId,
+      },
+    });
 
-    if(res.status === 200){
-      alert("User deleted")
+    if (res.status === 200) {
+      alert("User deleted");
       navigate("/Feed", { replace: true });
+    } else {
+      console.log(res);
     }
 
     // make sure this works (because i cant save users in the first place)
