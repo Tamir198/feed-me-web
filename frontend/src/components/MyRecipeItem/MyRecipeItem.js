@@ -1,14 +1,16 @@
 import styles from "./MyRecipeItem.module.css";
+import { Api } from "../../services/api";
+
 
 function MyRecipeItem(props) {
 
-  const recipeId = 465;
-  // TODO: get recipe id
+  const recipeId = "63bd6a99ab75a01e21d526d7";
+  // TODO: get recipe id (not hard coded)
 
   function deleteRecipe(){
-  //   const res = Api.delete("recipe/deleteRecipe", {
-  //     _id: recipeId
-  //   })
+    const res = Api.delete("/recipe/deleteRecipe", {
+      data: { _id: recipeId}
+    })
   }
 
   return (
