@@ -2,12 +2,10 @@ import Header from "../../components/Header/Header";
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
 import styles from "./Login.module.css";
 
-function Login() {
+function Login({ setIsLoggedIn }) {
   return (
     <div>
-      <Header />
-      <h1>Login page</h1>
-      <LoginMenu />
+      <LoginMenu setIsLoggedIn={setIsLoggedIn} />
     </div>
   );
 }

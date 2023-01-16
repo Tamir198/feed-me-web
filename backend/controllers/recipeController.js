@@ -2,7 +2,6 @@ import { Recipe } from "../models/recipeModel.js";
 import { VALUES } from "../constants/values.js";
 import { User } from "../models/userModel.js";
 import { ObjectId } from "mongodb";
-import { User } from "../models/userModel.js";
 import { io } from "../services/socket.js";
 import { openSocket } from "../services/socket.js";
 
