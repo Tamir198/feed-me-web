@@ -6,6 +6,7 @@ import Profile from "../Profile/Profile";
 import UploadRecipe from "../Upload/UploadRecipe";
 import NavBar from "../../components/NavBar/NavBar";
 import Header from "../../components/Header/Header";
+
 import "./App.css";
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
 import { BrowserRouter, Router, Outlet } from "react-router-dom";
