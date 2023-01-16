@@ -20,8 +20,14 @@ export const getRecipes = async (req, res) => {
 };
 
 export const getRecipesById = async (req, res) => {
-  const userId = req.query.id;
-  const user = await User.findOne({ _id: ObjectId(userId) });
+  const pageSize = VALUES.RECIPES_PAGE_SIZE;
+  const userId = req.body.id;
+  const pageNum = req.body.pageNum || 1;
+  const skip = (pageNum - 1) * pageSize;
+  const user = await User.findOne({ _id: userId })
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(pageSize);
 
   const userRecipes = await Recipe.find({
     _id: { $in: user.recipesId },

@@ -11,7 +11,7 @@ import {
 } from "../controllers/recipeController.js";
 
 router.get("/getRecipesNumber", getNumberOfRecipes);
-router.get("/getAllUserRecipes:id", getRecipesById);
+router.post("/getAllUserRecipes", getRecipesById);
 router.post("/getRecipes", getRecipes);
 router.post("/addRecipe", addRecipes);
 router.patch("/updateRecipe", updateRecipes);
