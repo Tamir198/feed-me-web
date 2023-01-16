@@ -24,14 +24,15 @@ export const getRecipesById = async (req, res) => {
   const userId = req.body.id;
   const pageNum = req.body.pageNum || 1;
   const skip = (pageNum - 1) * pageSize;
-  const user = await User.findOne({ _id: userId })
-    .sort({ createdAt: -1 })
-    .skip(skip)
-    .limit(pageSize);
+  const user = await User.findOne({ _id: userId });
 
   const userRecipes = await Recipe.find({
     _id: { $in: user.recipesId },
-  }).exec();
+  })
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(pageSize)
+    .exec();
   res.send({ userRecipes });
 };
 
