@@ -41,10 +41,17 @@ function LoginMenu({ setIsLoggedIn }) {
 
   // for existing but not logged in users
   async function logIn() {
-    const res = await Api.post("user/existingUser", {
-      email: userEmail,
-      password: userPass,
-    });
+    let res;
+    try {
+      res = await Api.post("user/existingUser", {
+        email: userEmail,
+        password: userPass,
+      });
+    } catch(error){
+      debugger
+      console.log(error);
+    }
+
     // let user = JSON.parse(localStorage.getItem("true"))
     let user = res.data;
     console.log(res.data);
