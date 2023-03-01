@@ -30,11 +30,17 @@ function Profile() {
 
   }
 
+  //TODO: check if logout works after fixing the login
+  function logoutUser(){
+    localStorage.removeItem("true");
+    navigate("/", {replace: true})
+  }
+
   return (
     <div className={styles.profile}>
       <input type="text" placeholder="Enter new name" />
       <button>Save changes</button>
-      <button>Logout</button>
+      <button onClick={logoutUser}>Logout</button>
       <button onClick={deleteUser}>Delete account</button>
     </div>
   );

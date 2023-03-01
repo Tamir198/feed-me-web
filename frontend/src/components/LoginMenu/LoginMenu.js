@@ -48,7 +48,6 @@ function LoginMenu({ setIsLoggedIn }) {
         password: userPass,
       });
     } catch(error){
-      debugger
       console.log(error);
     }
 
