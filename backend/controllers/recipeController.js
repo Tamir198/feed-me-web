@@ -33,6 +33,7 @@ export const getSumCategory = async (req, res) => {
 };
 export const getRecipesById = async (req, res) => {
   const userId = req.query.id;
+
   const user = await User.findOne({ _id: ObjectId(userId) });
 
   const userRecipes = await Recipe.find({
