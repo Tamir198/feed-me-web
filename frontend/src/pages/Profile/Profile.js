@@ -1,5 +1,6 @@
 import styles from "./Profile.module.css";
 import { Api } from "../../services/api";
+import { useEffect, useRef, useState } from "react";
 
 import {
   BrowserRouter as Router,
@@ -10,7 +11,7 @@ import {
 } from "react-router-dom";
 import MyRecipes from "../My Recipes/MyRecipes";
 
-function Profile() {
+function Profile({setIsLoggedIn}) {
   const navigate = useNavigate();
   const userId = JSON.parse(localStorage.getItem("true")).userId;
 
@@ -34,6 +35,7 @@ function Profile() {
   function logoutUser(){
     localStorage.removeItem("true");
     navigate("/", {replace: true})
+    setIsLoggedIn(false);
   }
 
   return (

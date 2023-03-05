@@ -13,7 +13,7 @@ export const AppRouter = ({ setIsLoggedIn }) => (
     <Routes>
       <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/Feed" element={<Feed />} />
-      <Route path="/Profile" element={<Profile />} />
+      <Route path="/Profile" element={<Profile setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/Tips" element={<Tips />} />
       <Route path="/UploadRecipe" element={<UploadRecipe />} />
       <Route path="/MyRecipes" element={<MyRecipes />} />
