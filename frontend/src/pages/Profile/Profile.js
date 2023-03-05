@@ -24,7 +24,8 @@ function Profile({setIsLoggedIn}) {
 
     if (res.status === 200) {
       alert("User deleted");
-      navigate("/Feed", { replace: true });
+      setIsLoggedIn(false);
+      navigate("/", { replace: true });
     } else {
       console.log(res);
     }
