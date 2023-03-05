@@ -32,17 +32,20 @@ function Profile({setIsLoggedIn}) {
 
   }
 
-  //TODO: check if logout works after fixing the login
   function logoutUser(){
     localStorage.removeItem("true");
     navigate("/", {replace: true})
     setIsLoggedIn(false);
   }
 
+  function saveChanges(){
+    // backend - need to add an option to get user's details + edit user
+  }
+
   return (
     <div className={styles.profile}>
       <input type="text" placeholder="Enter new name" />
-      <button>Save changes</button>
+      <button onClick={saveChanges}>Save changes</button>
       <button onClick={logoutUser}>Logout</button>
       <button onClick={deleteUser}>Delete account</button>
     </div>
