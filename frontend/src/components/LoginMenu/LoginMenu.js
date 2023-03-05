@@ -47,6 +47,7 @@ function LoginMenu({ setIsLoggedIn }) {
         email: userEmail,
         password: userPass,
       });
+      
     } catch(error){
       console.log(error);
     }
@@ -61,6 +62,7 @@ function LoginMenu({ setIsLoggedIn }) {
       currentUser.userId = user.id;
       currentUser.userFbId = user.firebaeId;
       setIsLoggedIn(true);
+      localStorage.setItem(currentUser.isLoggedIn, JSON.stringify(currentUser));
       navigate("/Feed", { replace: true });
     } else {
       alert("User does not exist. please register first");
