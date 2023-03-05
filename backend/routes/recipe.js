@@ -13,7 +13,7 @@ import {
 } from "../controllers/recipeController.js";
 
 router.get("/getRecipesNumber", getNumberOfRecipes);
-router.get("/getAllUserRecipes:id", getRecipesById);
+router.get("/getAllUserRecipes", getRecipesById);
 router.post("/getRecipes", getRecipes);
 router.get("/getSumCategory", getSumCategory);
 router.post("/addRecipe", addRecipes);
