@@ -41,10 +41,17 @@ function LoginMenu({ setIsLoggedIn }) {
 
   // for existing but not logged in users
   async function logIn() {
-    const res = await Api.post("user/existingUser", {
-      email: userEmail,
-      password: userPass,
-    });
+    let res;
+    try {
+      res = await Api.post("user/existingUser", {
+        email: userEmail,
+        password: userPass,
+      });
+      
+    } catch(error){
+      console.log(error);
+    }
+
     // let user = JSON.parse(localStorage.getItem("true"))
     let user = res.data;
     console.log(res.data);
@@ -55,6 +62,7 @@ function LoginMenu({ setIsLoggedIn }) {
       currentUser.userId = user.id;
       currentUser.userFbId = user.firebaeId;
       setIsLoggedIn(true);
+      localStorage.setItem(currentUser.isLoggedIn, JSON.stringify(currentUser));
       navigate("/Feed", { replace: true });
     } else {
       alert("User does not exist. please register first");
