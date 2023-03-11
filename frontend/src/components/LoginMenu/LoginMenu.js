@@ -21,7 +21,6 @@ function LoginMenu({ setIsLoggedIn }) {
       email: userEmail,
       password: userPass,
     });
-    console.log(userEmail + " " + userPass);
     // get from res only the id of the user
     // save user in local storage with the key isLoggedIn
     // localStorage.setItem("true", JSON.stringify(res.data));
@@ -47,9 +46,11 @@ function LoginMenu({ setIsLoggedIn }) {
         email: userEmail,
         password: userPass,
       });
-      
-    } catch(error){
+
+      debugger;
+    } catch (error) {
       console.log(error);
+      debugger;
     }
 
     // let user = JSON.parse(localStorage.getItem("true"))
@@ -58,7 +59,7 @@ function LoginMenu({ setIsLoggedIn }) {
     // go to Feed only if the user exists
     if (res.data.id !== undefined) {
       currentUser.isLoggedIn = true;
-      currentUser.useremail = user.name;
+      currentUser.useremail = user.email;
       currentUser.userId = user.id;
       currentUser.userFbId = user.firebaeId;
       setIsLoggedIn(true);
