@@ -12,7 +12,12 @@ export const SignInUser = async (req, res) => {
       req.body.password
     );
     const userRes = await User.findOne({ email: firebaseUserRes.name });
-    res.send({ id: userRes._id, email: userRes.email, name: userRes.email });
+    res.send({
+      id: userRes._id,
+      email: userRes.email,
+      name: userRes.email,
+      firebaeId: firebaseUserRes.id,
+    });
   } catch (error) {
     res.send(error);
   }
