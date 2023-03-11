@@ -47,9 +47,11 @@ function LoginMenu({ setIsLoggedIn }) {
         email: userEmail,
         password: userPass,
       });
-      
-    } catch(error){
+
+      debugger;
+    } catch (error) {
       console.log(error);
+      debugger;
     }
 
     // let user = JSON.parse(localStorage.getItem("true"))
