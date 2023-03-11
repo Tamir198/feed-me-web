@@ -7,8 +7,10 @@ import recipeRoutes from "./routes/recipe.js";
 import foodTipsRoutes from "./routes/foodTips.js";
 import { connectToMongo } from "./db.js";
 import { initFirebase } from "./services/firebase.js";
+import { openSocket } from "./services/socket.js";
 
 const loadExtensions = async function (app) {
+  openSocket();
   app.use(cors("*"));
   app.use(express.json());
   connectToMongo();

@@ -7,8 +7,10 @@ export const usePagesInMyRecipe = () => {
 
   const getRecipesNumber = async () => {
     //TODO replace id with generic userId that we want to get his requests
-    const res = await Api.get(`/recipe/getAllUserRecipes:`, {
-      params: { id: "63c2aca810aa10ed160be949" },
+    const currUserId = JSON.parse(localStorage.getItem("true")).userId;
+    debugger;
+    const res = await Api.get(`/recipe/getAllUserRecipes`, {
+      params: { id: currUserId },
     });
     setTotalRecipesNumber(res.data.userRecipes.length / 5);
     setUsersRecipes(res.data.userRecipes);
