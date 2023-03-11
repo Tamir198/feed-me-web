@@ -11,6 +11,8 @@ function UploadRecipe() {
     const userId = JSON.parse(localStorage.getItem("true")).userId;
     console.log(userId + ", " + title + ", " + description + ", " + catagory);
 
+    //todo check why this code for creating new user is here
+    //This is a method to upload new recipe and not create user
     const res = await Api.post("user/existingUser", {
       userId: userId,
       title: title,
