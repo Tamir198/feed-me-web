@@ -13,9 +13,10 @@ function UploadRecipe() {
 
     //todo check why this code for creating new user is here
     //This is a method to upload new recipe and not create user
-    const res = await Api.post("user/existingUser", {
+    const res = await Api.post("recipe/addRecipe", {
       userId: userId,
       title: title,
+      author: JSON.parse(localStorage.getItem("true")).useremail,
       description: description,
       category: catagory,
     });
