@@ -128,3 +128,11 @@ export const lastPosts = async (req, res) => {
       }
     });
 };
+
+export const searchRecipeByTitle = async (req, res) => {
+  const title = req.body.title;
+
+  const searchResult = await Recipe.find({ title: title }).exec();
+
+  res.send(searchResult);
+};
