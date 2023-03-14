@@ -23,10 +23,9 @@ p {
 }
 
 .latestPosts__container {
-    width: 30rem;
+    width: min-content;
     height: 25rem;
     overflow-y: scroll;
-    overflow-x: hidden;
     align-items: center;
 }
 
