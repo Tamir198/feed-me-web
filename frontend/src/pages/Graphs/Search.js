@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FeedItem from "../../components/FeedItem/FeedItem";
 import { Api } from "../../services/api";
+import { PostsDateSearch } from "./PostsDateSearch";
 
 export const Search = () => {
   const [latestPostsNumber, setLatestPostsNumber] = useState(1);
@@ -41,7 +42,7 @@ export const Search = () => {
         ))}
       </div>
 
-      <button onClick={() => setLatestPosts([])}>Reset Research </button>
+      <PostsDateSearch />
     </div>
   );
 };
