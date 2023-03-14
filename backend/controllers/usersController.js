@@ -1,3 +1,4 @@
+import { Recipe } from "../models/recipeModel.js";
 import { User } from "../models/userModel.js";
 import {
   createNewUser,
@@ -54,19 +55,23 @@ export const deleteUser = async (req, res) => {
   res.send(await deleteExistingUser(req.body.uid));
 };
 
-//TODO chang this so it will work
-export const getPostsAfterDate = async (req, res) => {
-  const cutoffDate = new Date("2022-01-01"); // example cutoff date
-  const objectIdFromDate =
-    Math.floor(cutoffDate.getTime() / 1000).toString(16) + "0000000000000000"; // convert cutoff date to ObjectId format
+export const numberOfPostsBetweenDates = async (req, res) => {
+  const startDate = new Date(req.body.startDate);
+  const endDate = new Date(req.body.endDate);
 
-  MyModel.find({ _id: { $gt: objectIdFromDate } }, (err, docs) => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log(docs); // array of documents matching the query
-    }
-  });
+  try {
+    const documents = await Recipe.find({
+      createdAt: {
+        $gte: startDate,
+        $lte: endDate,
+      },
+    });
+
+    res.json({
+      count: documents.length,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
 };
-
-
