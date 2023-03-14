@@ -2,8 +2,9 @@ import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 import { Api } from "../../services/api";
 import { color } from "d3";
-import styles from "./Graphs.css";
+import { Search } from "./Search";
 
+import "./Graphs.css";
 const Graps = () => {
   const [data, setData] = useState([]);
 
@@ -51,9 +52,12 @@ const Graps = () => {
   }, [data]);
 
   return (
-    <div>
-      <p style={{ color: "#551a8c" }}>Category Statistic</p>
-      <svg ref={containerRef} width={500} height={300} />
+    <div className="statistics__container">
+      <div>
+        <p style={{ color: "#551a8c" }}>Category Statistic</p>
+        <svg ref={containerRef} width={500} height={300} />
+      </div>
+      <Search />
     </div>
   );
 };

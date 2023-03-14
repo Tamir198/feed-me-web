@@ -1,3 +1,4 @@
+import { Recipe } from "../models/recipeModel.js";
 import { User } from "../models/userModel.js";
 import {
   createNewUser,
@@ -52,4 +53,25 @@ export const editUser = (req, res) => {
 };
 export const deleteUser = async (req, res) => {
   res.send(await deleteExistingUser(req.body.uid));
+};
+
+export const numberOfPostsBetweenDates = async (req, res) => {
+  const startDate = new Date(req.body.startDate);
+  const endDate = new Date(req.body.endDate);
+
+  try {
+    const documents = await Recipe.find({
+      createdAt: {
+        $gte: startDate,
+        $lte: endDate,
+      },
+    });
+
+    res.json({
+      count: documents.length,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
 };

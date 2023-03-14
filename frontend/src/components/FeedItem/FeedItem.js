@@ -10,7 +10,7 @@ function FeedItem(props) {
         <span>Date uploaded: {props.date}</span>
         <span>Catagory: {props.catagory}</span>
       </div>
-    </div>
+    </div>  
   );
 }
 
