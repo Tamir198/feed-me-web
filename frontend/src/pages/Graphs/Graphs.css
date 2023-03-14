@@ -10,6 +10,10 @@ p {
     flex-wrap: wrap;
 }
 
+.statistics__container>* {
+    margin: 0 auto;
+}
+
 .latestPost__container {
     display: flex;
 }
