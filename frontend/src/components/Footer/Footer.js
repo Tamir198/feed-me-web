@@ -14,8 +14,8 @@ export const Footer = () => {
       setIsConnected(true);
     });
 
-    socket.on("recipeAdded", (totalRecipe) => {
-      console.log("reicpe add from socket!!");
+    socket.on("recipes-count", (totalRecipe) => {
+      console.log("Got new total recipes from the backend");
       setrecepiesNumber(totalRecipe);
     });
 
