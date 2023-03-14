@@ -113,3 +113,18 @@ export const countRecipe = async (req, res) => {
     res.status(400).send(err.message);
   }
 };
+
+export const lastPosts = async (req, res) => {
+  Recipe.find()
+    .sort({ _id: -1 })
+    .limit(req.body.limit)
+    .exec((err, docs) => {
+      if (err) {
+        console.error(err);
+        res.status(404).send({ err: "Not found" });
+      } else {
+        console.log(docs);
+        res.send({ lastPosts: docs });
+      }
+    });
+};

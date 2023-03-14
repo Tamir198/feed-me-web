@@ -53,3 +53,20 @@ export const editUser = (req, res) => {
 export const deleteUser = async (req, res) => {
   res.send(await deleteExistingUser(req.body.uid));
 };
+
+//TODO chang this so it will work
+export const getPostsAfterDate = async (req, res) => {
+  const cutoffDate = new Date("2022-01-01"); // example cutoff date
+  const objectIdFromDate =
+    Math.floor(cutoffDate.getTime() / 1000).toString(16) + "0000000000000000"; // convert cutoff date to ObjectId format
+
+  MyModel.find({ _id: { $gt: objectIdFromDate } }, (err, docs) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(docs); // array of documents matching the query
+    }
+  });
+};
+
+

@@ -10,15 +10,20 @@ import {
   getNumberOfRecipes,
   getRecipesById,
   getSumCategory,
+  lastPosts,
 } from "../controllers/recipeController.js";
 
 router.get("/getRecipesNumber", getNumberOfRecipes);
 router.get("/getAllUserRecipes", getRecipesById);
-router.post("/getRecipes", getRecipes);
 router.get("/getSumCategory", getSumCategory);
-router.post("/addRecipe", addRecipes);
-router.patch("/updateRecipe", updateRecipes);
-router.delete("/deleteRecipe", deleteRecipes);
 router.get("/getSumCategory", countRecipe);
+
+router.post("/getRecipes", getRecipes);
+router.post("/lastPosts", lastPosts);
+router.post("/addRecipe", addRecipes);
+
+router.patch("/updateRecipe", updateRecipes);
+
+router.delete("/deleteRecipe", deleteRecipes);
 
 export default router;
