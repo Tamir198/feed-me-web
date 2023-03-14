@@ -25,10 +25,9 @@ p {
 .latestPosts__container {
     width: 30rem;
     height: 25rem;
-    overflow-y: auto;
-    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
     align-items: center;
-    padding: 2rem;
 }
 
 .latestPosts__container>* {
