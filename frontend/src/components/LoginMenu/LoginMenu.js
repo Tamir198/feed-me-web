@@ -9,6 +9,7 @@ function LoginMenu({ setIsLoggedIn }) {
     isLoggedIn: false,
     userId: "",
     useremail: "",
+    userName: "",
     userFbId: "",
   };
 
@@ -23,6 +24,7 @@ function LoginMenu({ setIsLoggedIn }) {
     });
     currentUser.userId = res.data._id;
     currentUser.useremail = userEmail;
+    currentUser.userName = res.data.name;
     currentUser.userFbId = res.data.firebaeId;
     currentUser.isLoggedIn = true;
     localStorage.setItem(currentUser.isLoggedIn, JSON.stringify(currentUser));
@@ -50,6 +52,7 @@ function LoginMenu({ setIsLoggedIn }) {
     if (res.data.id !== undefined) {
       currentUser.isLoggedIn = true;
       currentUser.useremail = user.email;
+      currentUser.userName = user.name;
       currentUser.userId = user.id;
       currentUser.userFbId = user.firebaeId;
       setIsLoggedIn(true);
