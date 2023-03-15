@@ -21,19 +21,13 @@ function LoginMenu({ setIsLoggedIn }) {
       email: userEmail,
       password: userPass,
     });
-    // get from res only the id of the user
-    // save user in local storage with the key isLoggedIn
-    // localStorage.setItem("true", JSON.stringify(res.data));
     currentUser.userId = res.data._id;
     currentUser.useremail = userEmail;
     currentUser.userFbId = res.data.firebaeId;
     currentUser.isLoggedIn = true;
     localStorage.setItem(currentUser.isLoggedIn, JSON.stringify(currentUser));
 
-    // let currentUser: {true, res.data._id, res.data.email, res.data.firebaeId}
     console.log(currentUser);
-    //Save the user details like this
-    // currentUser: {...}
     setIsLoggedIn(true);
     navigate("/Feed", { replace: true });
   }
@@ -46,14 +40,10 @@ function LoginMenu({ setIsLoggedIn }) {
         email: userEmail,
         password: userPass,
       });
-
-      debugger;
     } catch (error) {
       console.log(error);
-      debugger;
     }
 
-    // let user = JSON.parse(localStorage.getItem("true"))
     let user = res.data;
     console.log(res.data);
     // go to Feed only if the user exists
@@ -69,11 +59,6 @@ function LoginMenu({ setIsLoggedIn }) {
       alert("User does not exist. please register first");
     }
   }
-
-  //TODO: on createUser - user is not saved in the local storage
-  //login: can't find existing user. always returns "user not exists".
-  // probably "createUser" doesnt save user in the DB??
-  // what is the structure of a User document? password is saved?
 
   return (
     <div className="form">

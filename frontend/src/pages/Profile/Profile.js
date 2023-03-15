@@ -15,6 +15,10 @@ function Profile({setIsLoggedIn}) {
   const navigate = useNavigate();
   const userId = JSON.parse(localStorage.getItem("true")).userId;
 
+  let userName = JSON.parse(localStorage.getItem("true")).userName;
+  console.log(userName);
+  debugger;
+
   async function deleteUser() {
     const res = await Api.delete("user/deleteUser", {
       data: {
