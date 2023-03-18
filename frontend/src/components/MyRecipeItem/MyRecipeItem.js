@@ -31,9 +31,6 @@ function MyRecipeItem(props) {
 
   function handleDescriptionChange(event) {
     setDescription(event.target.textContent);
-      data: { _id: recipeId}
-    })
-    window.location.reload();
   }
 
   return (
