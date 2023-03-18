@@ -15,6 +15,7 @@ function MyRecipeItem(props) {
     const res = Api.delete("/recipe/deleteRecipe", {
       data: { _id: recipeId },
     });
+    window.location.reload();
   }
 
   function updateRecipe() {
