@@ -6,9 +6,7 @@ export const usePagesInMyRecipe = () => {
   const [usersRecipes, setUsersRecipes] = useState([]);
 
   const getRecipesNumber = async () => {
-    //TODO replace id with generic userId that we want to get his requests
     const currUserId = JSON.parse(localStorage.getItem("true")).userId;
-    debugger;
     const res = await Api.get(`/recipe/getAllUserRecipes`, {
       params: { id: currUserId },
     });

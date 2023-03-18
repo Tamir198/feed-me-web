@@ -14,6 +14,7 @@ import MyRecipes from "../My Recipes/MyRecipes";
 function Profile({setIsLoggedIn}) {
   const navigate = useNavigate();
   const userId = JSON.parse(localStorage.getItem("true")).userId;
+  const fbId = JSON.parse(localStorage.getItem("true")).userFbId;
 
   // for name placeholder
   // let userName = JSON.parse(localStorage.getItem("true")).userName;
@@ -41,14 +42,19 @@ function Profile({setIsLoggedIn}) {
     localStorage.removeItem("true");
     navigate("/", {replace: true})
     setIsLoggedIn(false);
+    localStorage.setItem("isLoggedIn", false);
   }
 
   function handleChange(event){
     setUserName(event.target.value);
   }
 
-  function saveChanges(event){
-    // backend - need to add an option to get user's details + edit user
+  async function saveChanges(event){
+    const res = await Api.patch("user/editUser", {
+        id: userId,
+        name: userName
+    }); 
+
     let currentUser = JSON.parse(localStorage.getItem("true"));
     currentUser.userName = userName;
     localStorage.setItem("true", JSON.stringify(currentUser));

@@ -31,6 +31,7 @@ function LoginMenu({ setIsLoggedIn }) {
 
     console.log(currentUser);
     setIsLoggedIn(true);
+    localStorage.setItem("isLoggedIn", true);
     navigate("/Feed", { replace: true });
   }
 

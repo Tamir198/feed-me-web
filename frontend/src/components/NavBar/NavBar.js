@@ -60,6 +60,15 @@ function NavBar() {
             Statistic
           </Link>
         </li>
+
+        <li>
+          <Link
+            style={{ textDecoration: "none", backgroundColor: "#95cac8" }}
+            to="/News"
+          >
+            News
+          </Link>
+        </li>
       </ul>
     </div>
   );

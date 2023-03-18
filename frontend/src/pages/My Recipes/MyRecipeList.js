@@ -12,9 +12,9 @@ export const MyRecipeList = ({ currPage, usersRecipes }) => {
           id={_id}
           title={title}
           description={description}
-          author="Danielle"
           date={createdAt}
           catagory={category}
+          recipeId = {_id}
         />
       ))}
     </div>

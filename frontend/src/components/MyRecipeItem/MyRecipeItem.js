@@ -1,5 +1,6 @@
 import styles from "./MyRecipeItem.module.css";
 import { Api } from "../../services/api";
+import { Router, useNavigate, Routes, navigate, Route } from "react-router-dom";
 
 import { useState } from "react";
 function MyRecipeItem(props) {
@@ -7,8 +8,8 @@ function MyRecipeItem(props) {
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
 
-  const recipeId = "63bd6a99ab75a01e21d526d7";
-  // TODO: get recipe id (not hard coded)
+  const navigate = useNavigate();
+  const recipeId = props.recipeId;
 
   function deleteRecipe() {
     const res = Api.delete("/recipe/deleteRecipe", {
@@ -30,6 +31,9 @@ function MyRecipeItem(props) {
 
   function handleDescriptionChange(event) {
     setDescription(event.target.textContent);
+      data: { _id: recipeId}
+    })
+    window.location.reload();
   }
 
   return (
@@ -49,7 +53,6 @@ function MyRecipeItem(props) {
         {props.description}
       </div>
       <div className={styles.details}>
-        <span>Author: {props.author}</span>
         <span>Date uploaded: {props.date}</span>
         <span>Catagory: {props.catagory}</span>
       </div>
