@@ -15,6 +15,10 @@ function Profile({setIsLoggedIn}) {
   const navigate = useNavigate();
   const userId = JSON.parse(localStorage.getItem("true")).userId;
 
+  // for name placeholder
+  let userName = JSON.parse(localStorage.getItem("true")).userName;
+  console.log(userName);
+
   async function deleteUser() {
     const res = await Api.delete("user/deleteUser", {
       data: {
@@ -44,7 +48,7 @@ function Profile({setIsLoggedIn}) {
 
   return (
     <div className={styles.profile}>
-      <input type="text" placeholder="Enter new name" />
+      <input type="text" placeholder={userName} />
       <button onClick={saveChanges}>Save changes</button>
       <button onClick={logoutUser}>Logout</button>
       <button onClick={deleteUser}>Delete account</button>

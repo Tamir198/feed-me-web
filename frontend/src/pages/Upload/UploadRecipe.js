@@ -1,11 +1,13 @@
 import { useState } from "react";
 import styles from "./UploadRecipe.module.css";
 import { Api } from "../../services/api";
+import { Router, useNavigate, Routes, navigate, Route } from "react-router-dom";
 
 function UploadRecipe() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [catagory, setCatagory] = useState("");
+  const navigate = useNavigate();
 
   async function uploadRecipe() {
     const userId = JSON.parse(localStorage.getItem("true")).userId;
@@ -21,9 +23,11 @@ function UploadRecipe() {
       category: catagory,
     });
 
-    if (res.status === 200)
+    if (res.status === 200){
       //OK
       alert("Recipe uploaded successfully!");
+      navigate("/Feed", { replace: true });
+    }
     else alert("Recipe failed to upload, please try again");
   }
 
