@@ -1,16 +1,18 @@
 import styles from "./MyRecipeItem.module.css";
 import { Api } from "../../services/api";
+import { Router, useNavigate, Routes, navigate, Route } from "react-router-dom";
 
 
 function MyRecipeItem(props) {
 
-  const recipeId = "63bd6a99ab75a01e21d526d7";
-  // TODO: get recipe id (not hard coded)
+  const navigate = useNavigate();
+  const recipeId = props.recipeId;
 
   function deleteRecipe(){
     const res = Api.delete("/recipe/deleteRecipe", {
       data: { _id: recipeId}
     })
+    window.location.reload();
   }
 
   return (
