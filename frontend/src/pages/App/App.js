@@ -11,11 +11,15 @@ import "./App.css";
 import LoginMenu from "../../components/LoginMenu/LoginMenu";
 import { BrowserRouter, Router, Outlet } from "react-router-dom";
 import { AppRouter } from "../../AppRouter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Footer } from "../../components/Footer/Footer";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
+
+  useEffect(() => {
+    localStorage.setItem('isLoggedIn', isLoggedIn);
+  }, [isLoggedIn]);
 
   return (
     <div>

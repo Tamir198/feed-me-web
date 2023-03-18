@@ -42,14 +42,14 @@ export const newUser = async (req, res) => {
   }
 };
 
-export const editUser = (req, res) => {
+export const editUser = async (req, res) => {
   const { id, name } = req.body;
   try {
-    Recipe.findByIdAndUpdate({ _id: id }, { name }).exec();
+    await User.findByIdAndUpdate({ _id: id }, { name }).exec();
+    res.send("update user");
   } catch (err) {
     res.status(400).send(err.message);
   }
-  res.send("update user");
 };
 export const deleteUser = async (req, res) => {
   res.send(await deleteExistingUser(req.body.uid));
