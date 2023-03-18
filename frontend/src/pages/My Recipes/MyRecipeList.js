@@ -7,8 +7,9 @@ import MyRecipeItem from "../../components/MyRecipeItem/MyRecipeItem";
 export const MyRecipeList = ({ currPage, usersRecipes }) => {
   return (
     <div>
-      {usersRecipes.map(({ title, description, category, createdAt }) => (
+      {usersRecipes.map(({ title, description, category, createdAt, _id }) => (
         <MyRecipeItem
+          id={_id}
           title={title}
           description={description}
           author="Danielle"
