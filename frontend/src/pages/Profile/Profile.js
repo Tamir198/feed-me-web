@@ -41,6 +41,7 @@ function Profile({setIsLoggedIn}) {
     localStorage.removeItem("true");
     navigate("/", {replace: true})
     setIsLoggedIn(false);
+    localStorage.setItem("isLoggedIn", false);
   }
 
   function handleChange(event){

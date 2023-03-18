@@ -16,7 +16,7 @@ export const AppRouter = ({ setIsLoggedIn }) => (
       <Route path="/Profile" element={<Profile setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/Tips" element={<Tips />} />
       <Route path="/UploadRecipe" element={<UploadRecipe />} />
-      <Route path="/MyRecipes" element={<MyRecipes />} />
+      <Route path="/MyRecipes" element={<MyRecipes setIsLoggedIn={setIsLoggedIn} />} />
       <Route path="/Statistic" element={<Graps />} />
     </Routes>
   </Suspense>

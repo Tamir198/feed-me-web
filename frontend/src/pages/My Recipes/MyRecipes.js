@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 
 import { MyRecipeList } from "./MyRecipeList.js";
 
-function MyRecipes() {
+function MyRecipes({setIsLoggedIn}) {
   const [currPage, setCurrPage] = useState(0);
   const [totalRecipesNumber, usersRecipes] = usePagesInMyRecipe();
 
