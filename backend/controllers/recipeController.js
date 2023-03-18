@@ -136,3 +136,23 @@ export const searchRecipeByTitle = async (req, res) => {
 
   res.send(searchResult);
 };
+
+export const updateSingleRecipe = async (req, res) => {
+  Recipe.findByIdAndUpdate(
+    req.body.id,
+    {
+      title: req.body.title,
+      description: req.body.description,
+    },
+    { new: true },
+    (err, updatedRecipe) => {
+      if (err) {
+        console.log(err);
+        res.send({ err: err.message });
+      } else {
+        console.log(updatedRecipe);
+        res.send("Recipe updated");
+      }
+    }
+  );
+};

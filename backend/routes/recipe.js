@@ -12,6 +12,7 @@ import {
   getSumCategory,
   lastPosts,
   searchRecipeByTitle,
+  updateSingleRecipe,
 } from "../controllers/recipeController.js";
 
 router.get("/getRecipesNumber", getNumberOfRecipes);
@@ -21,6 +22,7 @@ router.get("/getSumCategory", countRecipe);
 
 router.post("/getRecipes", getRecipes);
 router.post("/lastPosts", lastPosts);
+router.post("/updateSingleRecipe", updateSingleRecipe);
 router.post("/addRecipe", addRecipes);
 router.post("/searchByTitle", searchRecipeByTitle);
 

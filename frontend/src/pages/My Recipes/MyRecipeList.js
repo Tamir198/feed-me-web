@@ -9,6 +9,7 @@ export const MyRecipeList = ({ currPage, usersRecipes }) => {
     <div>
       {usersRecipes.map(({ title, description, category, createdAt, _id }) => (
         <MyRecipeItem
+          id={_id}
           title={title}
           description={description}
           date={createdAt}
