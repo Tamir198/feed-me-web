@@ -1,0 +1,15 @@
+    .news__container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .news__container>* {
+        font-size: 2rem;
+        max-width: 20ch;
+    }
+    
+    .news__title {
+        font-size: 5rem;
+        max-width: 100ch;
+        background: white;
+    }
